@@ -1,0 +1,2 @@
+run:
+	corepack pnpm dev
