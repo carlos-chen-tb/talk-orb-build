@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "slidev",
     "build": "slidev build --out ../dist",
-    "export": "slidev export --per-slide --dark --output ../slides.pdf"
+    "export": "slidev export --per-slide --output ../talk-orb-build.pdf"
   },
   "dependencies": {
     "@slidev/theme-default": "^0.25.0",
