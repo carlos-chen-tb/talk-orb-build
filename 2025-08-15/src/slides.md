@@ -267,6 +267,90 @@ class: py-10
 </div>
 
 ---
+level: 2
+layout: center
+class: py-10
+---
+
+# Some useful parameters
+
+<div mt-6 />
+
+<div class="mb-4">
+  <div text-xl font-bold text-orange-300 flex items-center>
+  <div mr-3 />Recommend to install VSCode CircleCI extention
+  </div>
+</div>
+
+<div grid grid-cols-4 gap-4>
+  <div v-click="1" class="rounded-lg p-12 bg-red-900/20 text-center flex flex-col items-center gap-2">
+    <div font-bold text-sm text-nowrap>nodejs</div>
+    <div text-left text-xs text-nowrap text-red-200 mt-1>
+      <br>
+      package_json_directory: . <br>
+      node_version: 22.18.0 <br>
+      package_manager: yarn <br>
+      package_manager_version: 1  <br><br>
+      install_command: "" <br>
+      build_command: "" <br>
+      lint_command: "" <br>
+      test_command: "" <br>
+      skip_install: false <br>
+      skip_lint: false <br>
+      skip_test: false <br>
+      skip_build: false <br>
+      circleci_cache_version: "v1" <br>
+      next_cache_directory: ./.next <br>
+      ...
+      <br>
+    </div>
+  </div>
+
+  <div v-click="2" class="rounded-lg p-12 bg-orange-900/20 text-center flex flex-col items-center gap-2">
+    <div font-bold text-sm text-nowrap>image_build</div>
+    <div text-left text-xs text-nowrap text-orange-200 mt-1>
+      <br>
+      dockerfile: Dockerfile.prod <br><br>
+      repo: "" <br><br>
+      tag: "" <br><br>
+      extra_build_args: "" <br><br>
+      ...
+      <br>
+    </div>
+  </div>
+
+  <div v-click="3" class="rounded-lg p-12 bg-amber-900/20 text-center flex flex-col items-center gap-2">
+    <div font-bold text-sm text-nowrap>notify</div>
+    <div text-left text-xs text-nowrap text-amber-200 mt-1>
+      <div text-size-2 text-wrap text-red-250 mt-1>
+      <br>
+      enable_slack_notify: true <br><br>
+      channel: artemis-notify <br><br>
+      </div>
+    <br>
+    </div>
+  </div>
+
+  <div v-click="4" class="rounded-lg p-12 bg-yellow-900/20 text-center flex flex-col items-center gap-2">
+    <div font-bold text-sm text-nowrap>others</div>
+    <div text-left text-xs text-wrap text-yellow-200 mt-1>
+      <br>
+      executor: "" <br><br>
+      repo: "" <br><br>
+      tag: "" <br><br>
+      extra_build_args: "" <br><br>
+      ...
+    </div>
+  </div>
+
+  <!-- <div v-click="6" class="rounded-lg p-12 bg-lime-900/20 text-center flex flex-col items-center gap-2">
+    <div i-carbon:port-output text="[50px]" text-lime-400 mb-2 />
+    <div font-bold text-sm text-nowrap>Decode</div>
+    <div text-xs text-nowrap text-lime-200 mt-1>解码输出</div>
+  </div> -->
+</div>
+
+---
 
 # More examples of using orb-build
 
