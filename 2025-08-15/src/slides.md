@@ -29,17 +29,23 @@ transition: slide-left
 mdc: true
 ---
 
-# Talk orb-build
+# Talk orb-build <span class="text-size-6">(v0.1)</span>
 
-Build container images faster and cost-effectively
+Build container images faster and more cost-effectively
 
 <div class="pt-12">
   <span class="text-s px-0 py-0 rounded" hover="bg-white bg-opacity-10">
     Carlos Chen / Matus Kacmar
   </span>
   <span class="text-xs rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    @2024-10-28
+    @2025-08-15
   </span>
+</div>
+
+<div w-full absolute bottom-0 left-0 flex items-center transform="translate-x--10 translate-y--10">
+  <div w-full flex items-center justify-end gap-4>
+    <img src="/ThirdBridge_Horizontal_Lockup_Blue_Dark_RGB_1200x185.png" h-6 w-22 >
+  </div>
 </div>
 
 <style>
@@ -47,13 +53,14 @@ h1 {
   background-image: linear-gradient(45deg, #4EC5D4 10%, #fff 20%) !important;
 }
 </style>
+
 ---
 transition: fade-out
 ---
 
 # What's orb?
 
-<span v-mark.circle.orange="4">Reusable CircleCI command or job</span> to use in your [.circleci/config.yml](https://github.com/third-bridge/expert-hub/blob/edc42fbabdf65c3af3fe4cb4338e6d31fdea8720/.circleci/build.yml)
+<span v-mark.circle.orange="4">[Reusable CircleCI command or job](https://github.com/search?q=org%3Athird-bridge+path%3A%2F%5E%5C.circleci%5C%2F.*%5C.yml%24%2F+%2F%28thirdbridge%7Cserverless%29%5C%2F.*%40%2F&type=code&p=2)</span> to use in your [.circleci/config.yml](https://github.com/third-bridge/expert-hub/blob/edc42fbabdf65c3af3fe4cb4338e6d31fdea8720/.circleci/build.yml)
 
 ```yaml {all|4-5|13-20|all}
 version: 2.1
@@ -85,11 +92,12 @@ workflows:
   border: 1px solid #eee1;
 }
 </style>
+
 ---
 level: 2
 ---
 
-# Real-world usage
+# How does it look?
 
 In CircleCI Web UI
 
@@ -97,7 +105,7 @@ In CircleCI Web UI
 
 ---
 
-# Real-world usage
+# How does it look?
 
 Slack notify enabled
 
@@ -128,7 +136,7 @@ level: 2
 
 # How to improve it?
 
-Step 1: problem analysis
+Problem analysis
 
 - Pick up one [pipeline execution](https://app.circleci.com/pipelines/github/third-bridge/expert-hub/1412) to check the behaviour
 
@@ -136,9 +144,13 @@ Step 1: problem analysis
   - Kaden spent <span text-red>10m 17s</span> waiting for this image built
   </div>
 
+<br>
+
+<div v-click="2">
+
 - Check the [definitions](https://github.com/third-bridge/expert-hub/blob/5aa1cf30e1bc2c446473b422a92346c884a4580f/.circleci/config.yml#L1-L213) from source
 
-  <div v-click="2">
+  <div v-click="3">
 
   - <span text-red>213</span> lines of ".circleci/config.yml"
 
@@ -147,3 +159,139 @@ Step 1: problem analysis
   - <span text-red>123</span> lines of "Dockerfile"
 
   </div>
+
+</div>
+---
+level: 2
+---
+
+# How to improve it?
+
+Clarify requirements
+
+<br>
+
+- yarn/pnpm/npm install
+
+- eslint
+
+- jest
+
+- next build, nest build
+
+- image build
+
+---
+level: 2
+layout: center
+class: py-10
+---
+
+# How to improve it?
+
+<div mt-6 />
+
+<div class="mb-4">
+  <div text-xl font-bold text-orange-300 flex items-center>
+    <div i-carbon:flow mr-3 />Possible improvements
+  </div>
+</div>
+
+<div grid grid-cols-4 gap-4>
+  <div v-click="1" class="rounded-lg p-12 bg-red-900/20 text-center flex flex-col items-center gap-2">
+    <div i-carbon:document text="[50px]" text-red-400 mb-2 />
+    <div font-bold text-sm text-nowrap>Cache</div>
+    <div text-left text-xs text-nowrap text-red-200 mt-1>
+      <br>
+      node_moduels <br><br>
+      .next/cache <br><br>
+      container registry cache <br>
+      <br>
+    </div>
+  </div>
+
+  <div v-click="2" class="rounded-lg p-12 bg-orange-900/20 text-center flex flex-col items-center gap-2">
+    <div i-carbon:settings text="[50px]" text-orange-400 mb-2 />
+    <div font-bold text-sm text-nowrap>Config</div>
+    <div text-left text-xs text-nowrap text-orange-200 mt-1>
+      <br>
+      jest --onlyChanged ... <br><br>
+      <div text-size-2 text-wrap text-red-250 mt-1>
+      eslint $(git diff main...HEAD) <br>
+      </div>
+      <br>
+      Next: output: 'standalone' <br>
+    </div>
+  </div>
+
+  <div v-click="3" class="rounded-lg p-12 bg-amber-900/20 text-center flex flex-col items-center gap-2">
+    <div i-carbon:chip text="[50px]" text-amber-400 mb-2 />
+    <div font-bold text-sm text-nowrap>Dockerfile</div>
+    <div text-left text-xs text-nowrap text-amber-200 mt-1>
+      <div text-size-2 text-wrap text-red-250 mt-1>
+      <br>
+      move base docker stage steps into CircleCI steps <br>
+      </div>
+    <br>
+    whitelist dockerignore
+    </div>
+  </div>
+
+  <div v-click="4" class="rounded-lg p-12 bg-yellow-900/20 text-center flex flex-col items-center gap-2">
+    <div i-carbon:play text="[50px]" text-yellow-400 mb-2 />
+    <div font-bold text-sm text-nowrap>Execution</div>
+    <div text-xs text-wrap text-yellow-200 mt-1>
+          <br>
+          <br>
+          CircleCI machine executor seems a bit quicker
+    </div>
+  </div>
+
+  <!-- <div v-click="6" class="rounded-lg p-12 bg-lime-900/20 text-center flex flex-col items-center gap-2">
+    <div i-carbon:port-output text="[50px]" text-lime-400 mb-2 />
+    <div font-bold text-sm text-nowrap>Decode</div>
+    <div text-xs text-nowrap text-lime-200 mt-1>解码输出</div>
+  </div> -->
+</div>
+
+  <div v-click="5" mt-4 class="bg-white/10 rounded-lg p-4">
+  <div text-lg font-bold mb-4 text-neutral-200>Show me code</div>
+  <div flex flex-wrap gap-3>
+    <div class="px-3 py-2 bg-blue-800/30 rounded-full text-sm">
+      <a href="https://github.com/third-bridge/expert-hub/blob/541d54d51c2f01b425c0ca7755f09372157dca0d/.circleci/build.yml#L1">Implementation</a>
+    </div>
+    <div v-click="6" class="px-3 py-2 bg-blue-800/30 rounded-full text-sm">
+      <a href="https://github.com/third-bridge/orb-build">Make it reusable</a>
+    </div>
+  </div>
+</div>
+
+---
+
+# More examples of using orb-build
+
+- orb-build/image_build
+
+  - [intranet-v2 test containers](https://github.com/third-bridge/intranet-v2/pull/2038/files)<span v-click="1">, </span><span v-click="1" text-orange>1300 credits</span> <span v-click="1" text-orange>-></span> <span v-click="1" text-green>90 credits</span>
+
+<br>
+<div v-click="2">
+
+- orb-build/node_image_build
+
+  - Randomly selected [transcript-portal](https://github.com/third-bridge/transcript-portal/compare/CLD-3185-evaluate-image-build-orb-job-performance-in-more-service-repos) to test
+
+    - p95_JOB_RUN_SECONDS of build-test-push is <span text-orange>566 seconds</span>, could reduce to <span text-green>[266 seconds](https://wearethirdbridge.slack.com/archives/C08TVMX0MLP/p1753956323140299?thread_ts=1753956075.362639&cid=C08TVMX0MLP)</span>
+
+    - DLC credits will be <span text-green>0</span>
+
+- <span text-orange>! It's v0.1.13, We need more review from both DevSecOps internal and wider Engineering</span>
+
+</div>
+
+---
+layout: center
+class: text-center
+---
+
+# Thank you!
