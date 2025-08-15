@@ -44,7 +44,7 @@ Build container images faster and more cost-effectively
 
 <div w-full absolute bottom-0 left-0 flex items-center transform="translate-x--10 translate-y--10">
   <div w-full flex items-center justify-end gap-4>
-    <img src="/ThirdBridge_Horizontal_Lockup_Blue_Dark_RGB_1200x185.png" h-6 w-22 >
+    <img src="/ThirdBridge_Horizontal_Lockup_Blue_Dark_RGB_1200x185.png" h-6 w-40 >
   </div>
 </div>
 
@@ -99,7 +99,7 @@ level: 2
 
 # How does it look?
 
-In CircleCI Web UI
+[In CircleCI Web UI](https://app.circleci.com/pipelines/github/third-bridge/expert-hub/5187/workflows/2254137d-bbfd-4e9c-ba9f-79585c841ac2/jobs/6801)
 
 <img src="/expert-hub_node-image-build_circleci_ui.png" w-full />
 
@@ -126,7 +126,7 @@ Back to [2025-02](https://splunk.test10.pro/en-US/app/search/search?q=search%20i
 
 <br>
 
-- [280 workflow](https://splunk.test10.pro/en-US/app/search/search?q=search%20index%3D%22ci%22%20sourcetype%3D%22circleci_metric%22%0A%0Aearliest%3D%2201%2F01%2F2025%3A00%3A00%3A00%22%20latest%3D%2208%2F01%2F2025%3A00%3A00%3A00%22%0A%0APROJECT_NAME%3D%22expert-hub%22%0A%20%20%20%20%0A%7C%20bin%20span%3D1mon%20_time%0A%7C%20stats%0Adc(WORKFLOW_ID)%20AS%20dc_WORKFLOW_ID%0Asum(TOTAL_CREDITS)%20AS%20TOTAL_CREDITS%0Asum(DLC_CREDITS)%20AS%20DLC_CREDITS%0Aby%20_time%0A%0A%7C%20eval%20%0Aestimated_total_cost%3Dround(TOTAL_CREDITS%2F100*0.06%2C%200)%2C%0Aestimated_DLC_cost%3Dround(DLC_CREDITS%2F100*0.06%2C%200)%0A%0A%7C%20table%20_time%20dc_WORKFLOW_ID%20TOTAL_CREDITS%20estimated_total_cost%20DLC_CREDITS%20estimated_DLC_cost%0A%0A%60%60%60%0A%7C%20bin%20span%3D1w%20_time%0A%7C%20stats%0Acount%20as%20job_count%0Asum(TOTAL_CREDITS)%20AS%20TOTAL_CREDITS%0Asum(COMPUTE_CREDITS)%20AS%20COMPUTE_CREDITS%0Asum(DLC_CREDITS)%20AS%20DLC_CREDITS%0Asum(USER_CREDITS)%20AS%20USER_CREDITS%0A%0Aby%20_time%0A%0A%7C%20eval%20%0Aestimated_total_cost%3Dround(TOTAL_CREDITS%2F100*0.06%2C%200)%2C%0Aestimated_compute_cost%3Dround(COMPUTE_CREDITS%2F100*0.06%2C%200)%2C%0Aestimated_user_cost%3Dround(USER_CREDITS%2F100*0.06%2C%200)%2C%0Aestimated_DLC_cost%3Dround(DLC_CREDITS%2F100*0.06%2C%200)%0A%7C%20addcoltotals%20*_CREDITS%20job_count%0A%60%60%60&display.page.search.mode=fast&dispatch.sample_ratio=1&workload_pool=&earliest=-24h%40h&latest=now&display.page.search.tab=statistics&display.general.type=statistics&display.statistics.totalsRow=1&display.statistics.wrap=0&display.visualizations.trellis.enabled=1&display.visualizations.charting.legend.placement=none&display.visualizations.charting.axisTitleX.visibility=collapsed&display.visualizations.charting.axisTitleY.visibility=collapsed&display.visualizations.charting.axisTitleY2.visibility=collapsed&display.visualizations.charting.chart.overlayFields=&display.visualizations.charting.layout.splitSeries=1&sid=1755157488.74) triggers <span v-mark.circle.orange="1">costs 125$ total</span>, including 41$ CircleCI docker_layer_caching cost
+- [280 workflow](https://splunk.test10.pro/en-US/app/search/search?q=search%20index%3D%22ci%22%20sourcetype%3D%22circleci_metric%22%0A%0Aearliest%3D%2201%2F01%2F2025%3A00%3A00%3A00%22%20latest%3D%2208%2F01%2F2025%3A00%3A00%3A00%22%0A%0APROJECT_NAME%3D%22expert-hub%22%0A%20%20%20%20%0A%7C%20bin%20span%3D1mon%20_time%0A%7C%20stats%0Adc(WORKFLOW_ID)%20AS%20dc_WORKFLOW_ID%0Asum(TOTAL_CREDITS)%20AS%20TOTAL_CREDITS%0Asum(DLC_CREDITS)%20AS%20DLC_CREDITS%0Asum(COMPUTE_CREDITS)%20AS%20COMPUTE_CREDITS%0Asum(USER_CREDITS)%20AS%20USER_CREDITS%0Aby%20_time%0A%0A%7C%20eval%20%0Aestimated_total_cost%3Dround(TOTAL_CREDITS%2F100*0.06%2C%200)%2C%0Aestimated_compute_cost%3Dround(COMPUTE_CREDITS%2F100*0.06%2C%200)%2C%0Aestimated_user_cost%3Dround(USER_CREDITS%2F100*0.06%2C%200)%2C%0Aestimated_DLC_cost%3Dround(DLC_CREDITS%2F100*0.06%2C%200)%0A%0A%7C%20table%20_time%20dc_WORKFLOW_ID%20TOTAL_CREDITS%20estimated_total_cost%20DLC_CREDITS%20estimated_DLC_cost%20COMPUTE_CREDITS%20estimated_compute_cost%20USER_CREDITS%20estimated_user_cost%0A%0A%60%60%60%0A%7C%20addcoltotals%20*_CREDITS%20job_count%0A%60%60%60&display.page.search.mode=fast&dispatch.sample_ratio=1&workload_pool=&earliest=-24h%40h&latest=now&display.page.search.tab=statistics&display.general.type=statistics&display.statistics.totalsRow=1&display.statistics.wrap=0&display.visualizations.trellis.enabled=1&display.visualizations.charting.legend.placement=none&display.visualizations.charting.axisTitleX.visibility=collapsed&display.visualizations.charting.axisTitleY.visibility=collapsed&display.visualizations.charting.axisTitleY2.visibility=collapsed&display.visualizations.charting.chart.overlayFields=&display.visualizations.charting.layout.splitSeries=1&sid=1755242983.217&display.statistics.format.0=color&display.statistics.format.0.scale=minMidMax&display.statistics.format.0.colorPalette=minMidMax&display.statistics.format.0.colorPalette.minColor=%23FFFFFF&display.statistics.format.0.colorPalette.maxColor=%23D41F1F&display.statistics.format.0.field=estimated_compute_cost&display.statistics.format.1=color&display.statistics.format.1.scale=minMidMax&display.statistics.format.1.colorPalette=minMidMax&display.statistics.format.1.colorPalette.minColor=%23FFFFFF&display.statistics.format.1.colorPalette.maxColor=%23D41F1F&display.statistics.format.1.field=estimated_DLC_cost) triggers <span v-mark.circle.orange="1">costs 125$ total</span>, including 41$ CircleCI docker_layer_caching cost
 
 <br>
 
@@ -272,7 +272,7 @@ layout: center
 class: py-10
 ---
 
-# Some useful parameters
+# Some useful [parameters](https://circleci.com/developer/orbs/orb/thirdbridge/build#jobs-node_image_build)
 
 <div mt-6 />
 
@@ -322,7 +322,7 @@ class: py-10
   <div v-click="3" class="rounded-lg p-12 bg-amber-900/20 text-center flex flex-col items-center gap-2">
     <div font-bold text-sm text-nowrap>notify</div>
     <div text-left text-xs text-nowrap text-amber-200 mt-1>
-      <div text-size-2 text-wrap text-red-250 mt-1>
+      <div text-xs text-wrap text-red-250 mt-1>
       <br>
       enable_slack_notify: true <br><br>
       channel: artemis-notify <br><br>
@@ -335,6 +335,7 @@ class: py-10
     <div font-bold text-sm text-nowrap>others</div>
     <div text-left text-xs text-wrap text-yellow-200 mt-1>
       <br>
+      debug: true <br><br>
       executor: "" <br><br>
       repo: "" <br><br>
       tag: "" <br><br>
@@ -369,7 +370,7 @@ class: py-10
 
     - DLC credits will be <span text-green>0</span>
 
-- <span text-orange>! It's v0.1.13, We need more review from both DevSecOps internal and wider Engineering</span>
+- <span text-orange>! It's in v0.1.13, we need more review from both DevSecOps internal and wider Engineering</span>
 
 </div>
 
